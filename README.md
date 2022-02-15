@@ -4,10 +4,10 @@
   <img src="swiggy-x-frontend/assets/images/food-app-1.png" width="250" height="450">
   <img src="swiggy-x-frontend/assets/images/food-app-2.png" width="250" height="450">
   <img src="swiggy-x-frontend/assets/images/food-app-3.png" width="250" height="450">
-  <img src="swiggy-x-frontend/assets/images/food-app-4.png" width="250" height="450">
  </div>
 
-<div style="display:'inline-flex'; margin:'auto';">
+<div style="display:'flex'; justify-content: 'space-between';">
+  <img src="swiggy-x-frontend/assets/images/food-app-4.png" width="250" height="450">
   <img src="swiggy-x-frontend/assets/images/food-app-5.png" width="250" height="450">
   <img src="swiggy-x-frontend/assets/images/food-app-6.png" width="250" height="450">
  </div>
