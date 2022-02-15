@@ -1,7 +1,7 @@
 # Food-Delivery-App ( React Native + Django )
 
 
-<img src="swiggy-x-frontend/assets/images/food-app-1.png" width="250" height="300">
+<img src="swiggy-x-frontend/assets/images/food-app-1.png" width="280" height="500">
 
 <img src="static/css/Screenshot%202021-10-23%20at%2015-01-02%20classes%20on.png" width="250" height="250">
 
