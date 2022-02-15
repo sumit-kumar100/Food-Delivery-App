@@ -2,9 +2,11 @@ import { View, TouchableOpacity, Text, Modal, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 import { WebView } from 'react-native-webview';
 import { React, useState } from 'react';
+import { API_URL } from '../../constants';
 import LottieView from 'lottie-react-native';
 import OrderItem from './OrderItem';
 import axios from 'react-native-axios';
+
 
 
 const ViewCart = (props) => {
@@ -37,7 +39,7 @@ const ViewCart = (props) => {
             FoodItems: Items,
             TotalAmount: total
         }
-        axios.get(`http://anjali1196.pythonanywhere.com/paytm/create-order/?FoodData=${JSON.stringify(FoodData)}`)
+        axios.get(`API_URL/create-order/?FoodData=${JSON.stringify(FoodData)}`)
             .then((res) => {
                 setFoodOrderId(res.data.OrderID)
                 setIsLoading(false)
@@ -91,7 +93,7 @@ const ViewCart = (props) => {
                                     </>
                                     :
                                     <WebView
-                                        source={{ uri: 'http://anjali1196.pythonanywhere.com/paytm/ReactNativeCustomPayment/' }}
+                                        source={{ uri: `API_URL/ReactNativeCustomPayment/` }}
                                         originWhitelist={['*']}
                                         injectedJavaScript={`document.getElementById('OrderID').value = "${FoodOrderID}"; document.getElementById('PaytmForm').submit()`}
                                         onNavigationStateChange={data => {
