@@ -3,7 +3,7 @@
 
 <img src="swiggy-x-frontend/assets/images/food-app-1.png" width="500" height="250">
 
-<img src="static/css/Screenshot%202021-10-23%20at%2015-01-02%20classes%20on.png" width="500" height="250">
+<img src="static/css/Screenshot%202021-10-23%20at%2015-01-02%20classes%20on.png" width="250" height="250">
 
 <img src="static/css/Screenshot%202021-10-23%20at%2015-02-26%20classes%20on.png" width="500" height="250">
 
