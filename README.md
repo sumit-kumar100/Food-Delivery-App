@@ -23,4 +23,4 @@ Changes you  have to made to frontend.
 You can also run only frontend part . Simple clone and run npm install . Howenver backend has been used only for payment purpose..
 
 # Note :-
-if you are running your backend on localhost payment won't work in this case you can use ngrok. It will replace your localhost server with a realtime public url..
+React native axios request will give error while creating order as localhost is not allowed in react-native-axios you can connect your localhost port to a public url using ngrok easily using command - ngrok.exe http 8000 > hit Enter and then metioned that url in Constants.js . Check this out you will love it , otherwise you need a domain name , or you can host backend on free platform like pythonanywhere.com etc...
