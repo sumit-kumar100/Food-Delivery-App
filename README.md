@@ -1,5 +1,14 @@
 # Food-Delivery-App ( React Native + Django )
 
+
+<img src="static/css/Screenshot%202021-10-23%20at%2015-00-37%20classes%20on.png" width="500" height="250">
+
+<img src="static/css/Screenshot%202021-10-23%20at%2015-01-02%20classes%20on.png" width="500" height="250">
+
+<img src="static/css/Screenshot%202021-10-23%20at%2015-02-26%20classes%20on.png" width="500" height="250">
+
+<img src="static/css/Screenshot%202021-10-23%20at%2015-02-45%20classes%20on.png" width="500" height="250">
+
 Changes you have to made to backend.
 1. In backend edit PaymentViews.py file and write your own Paytm MERCHANT_ID and MERCHANT_KEY 
 2. In the same file your have to write your own website url http://example.com/
