@@ -4,12 +4,13 @@
   <img src="swiggy-x-frontend/assets/images/food-app-1.png" width="250" height="450">
   <img src="swiggy-x-frontend/assets/images/food-app-2.png" width="250" height="450">
   <img src="swiggy-x-frontend/assets/images/food-app-3.png" width="250" height="450">
+  <img src="swiggy-x-frontend/assets/images/food-app-4.png" width="250" height="450">
  </div>
 
- <img src="swiggy-x-frontend/assets/images/food-app-4.png" width="280" height="500">
-<img src="static/css/Screenshot%202021-10-23%20at%2015-02-26%20classes%20on.png" width="500" height="250">
-
-<img src="static/css/Screenshot%202021-10-23%20at%2015-02-45%20classes%20on.png" width="500" height="250">
+<div style="display:'inline-flex'; margin:'auto';">
+  <img src="swiggy-x-frontend/assets/images/food-app-5.png" width="250" height="450">
+  <img src="swiggy-x-frontend/assets/images/food-app-6.png" width="250" height="450">
+ </div>
 
 Changes you have to made to backend.
 1. In backend edit PaymentViews.py file and write your own Paytm MERCHANT_ID and MERCHANT_KEY 
