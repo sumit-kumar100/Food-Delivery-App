@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if response.STATUS == "TXN_SUCCESS" %} Transaction Successful {% else %} Transaction Failed {% endif %}
+    </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .Redirect {
+            height: 100vh;
+            width: 100vw;
+            background-color: #ffffff;
+        }
+
+        .textContainer {
+            position: relative;
+            float: left;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            line-height: 40px;
+            padding: 40px 35px 30px 35px;
+            border-radius: 100px;
+            background-color: white;
+        }
+
+        .Image {
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Redirect">
+        <div class="textContainer">
+            <img src="{% static 'img/pleasewait.gif' %}" class="Image">
+        </div>
+    </div>
+</body>
+
+</html

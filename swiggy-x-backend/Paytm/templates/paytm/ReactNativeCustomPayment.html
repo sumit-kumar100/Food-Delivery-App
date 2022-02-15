@@ -1,0 +1,11 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<body>
+  <form action="/paytm/pay/" method="post" id="PaytmForm">
+    {% csrf_token %}
+    <input type="text" id="OrderID" hidden name="OrderID" value="">
+  </form>
+</body>
+
+</html>

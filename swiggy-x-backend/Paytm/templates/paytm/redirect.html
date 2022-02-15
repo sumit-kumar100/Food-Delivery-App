@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paytm Pay</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .Redirect {
+            height: 100vh;
+            width: 100vw;
+            background-color: #ffffff;
+        }
+
+        .textContainer {
+            position: relative;
+            float: left;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            line-height: 40px;
+            padding: 40px 35px 30px 35px;
+            border-radius: 100px;
+            background-color: white;
+        }
+
+        .Image {
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="Redirect">
+        <div class="textContainer">
+            <img src="{% static 'img/pleasewait.gif' %}" class="Image">
+        </div>
+    </div>
+
+    <form action="https://securegw-stage.paytm.in/order/process/" method="post" id="paytmForm" name="paytmForm">
+        <input type="text" hidden name="MID" value="{{ MID }}">
+        <input type="text" hidden name="ORDER_ID" value="{{ ORDER_ID }}">
+        <input type="text" hidden name="TXN_AMOUNT" value="{{ TXN_AMOUNT }}">
+        <input type="text" hidden name="CUST_ID" value={{CUST_ID}}>
+        <input type="text" hidden name="INDUSTRY_TYPE_ID" value="{{INDUSTRY_TYPE_ID }}">
+        <input type="text" hidden name="WEBSITE" value="{{ WEBSITE }}">
+        <input type="text" hidden name="CHANNEL_ID" value="{{ CHANNEL_ID }}">
+        <input type="text" hidden name="WEB" value="{{ WEB }}">
+        <input type="text" hidden name="CALLBACK_URL" value="{{ CALLBACK_URL }}">
+        <input type="text" hidden name="CHECKSUMHASH" value="{{ CHECKSUMHASH }}">
+    </form>
+    <script>
+        document.getElementById('paytmForm').submit()
+    </script>
+</body>
+
+</html>
