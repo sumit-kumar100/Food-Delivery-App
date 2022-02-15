@@ -5,6 +5,7 @@ export const Axios = axios.create({
     headers: { 'user-key': "7749b19667964b87a3efc739e254ada2" }
 });
 
+export const API_URL = "http://xyz.com/paytm";   // In my case it Was :- http://anjali1196.pythonanywhere.com/paytm
 
 const pizza = [
     {
