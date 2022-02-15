@@ -29,14 +29,14 @@ def start_payment(request):
     # we have to send the param_dict to the frontend
     # these credentials will be passed to paytm order processor to verify the business account
     param_dict = {
-        'MID': 'DIY12386817555501617',
+        'MID': 'MERCHANT_ID',   # WRITE YOUR OWN PAYTM MERCHANT ID...... ! IMPORTANT
         'ORDER_ID': 'Order-ID-' + str(order.id),
         'TXN_AMOUNT': str(order.Amount),
         'CUST_ID': 'Customer-ID-' + str(order.id),
         'INDUSTRY_TYPE_ID': 'Retail',
         'WEBSITE': 'WEBSTAGING',
         'CHANNEL_ID': 'WEB',
-        'CALLBACK_URL': 'http://anjali1196.pythonanywhere.com/paytm/handlepayment/',
+        'CALLBACK_URL': 'http://xyz.com/paytm/handlepayment/',    # In my Case it was http://anjali1196.pythonanywhere.com/paytm/handlepayment/
         # this is the url of handlepayment function, paytm will send a POST request to the fuction associated with this CALLBACK_URL
     }
 
@@ -85,7 +85,7 @@ def handlepayment(request):
 
     # we will verify the payment using our merchant key and the checksum that we are getting from Paytm request.POST
     verify = Checksum.verify_checksum(
-        response_dict, "bKMfNxPPf_QdZppa", checksum)
+        response_dict, "MERCHANT_KEY", checksum)   # WRITE YOUR OWN MERCHANT KEY...
 
     if verify:
         if response_dict['RESPCODE'] == '01':
