@@ -24,3 +24,5 @@ You can also run only frontend part . Simple clone and run npm install . Howenve
 
 # Note :-
 React native axios request will give error while creating order as localhost is not allowed in react-native-axios you can connect your localhost port to a public url using ngrok easily using command - ngrok.exe http 8000 > hit Enter and then metioned that url in Constants.js . Check this out you will love it , otherwise you need a domain name , or you can host backend on free platform like pythonanywhere.com etc...
+
+# Enjoy 🥳🥳🥳🥳
