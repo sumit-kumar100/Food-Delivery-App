@@ -1,12 +1,16 @@
 import { View, StyleSheet, Text, Image, TouchableOpacity, Pressable, TextInput, FlatList } from 'react-native';
 import { Placeholder, PlaceholderMedia, PlaceholderLine, ShineOverlay } from "rn-placeholder";
-import { React, useState, useEffect, useRef } from 'react';
+import { React, useState, useEffect, useRef, useCallback } from 'react';
 import { Divider } from 'react-native-elements';
 import { Axios } from '../../constants';
 import { useSelector } from 'react-redux';
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo'
 
+
+// Important Note For Debouncing if using let keyword for timeoutId declare debounce funtion outside React Component and if using var keyword for timeoutId you can declare debouce funtion within React COmponent....
+
+var timeOutId;
 
 const SearchBar = ({ navigation }) => {
 
@@ -29,42 +33,47 @@ const SearchBar = ({ navigation }) => {
     // inputFocusRef
     const inputFocus = useRef()
 
-    // handleonChangeText
-    const handleOnChangeText = (text) => {
-        setSearchQuery(text)
-        // && SearchQuery.length % 2 === 0
-        if (SearchQuery.length !== 0) {
-            setDataFetched(false)
-            Axios.get(`api/v2.1/search?q=${SearchQuery}&count=8`)
-                .then((res) => {
-                    let startsWith = [], notStartsWith = []
-                    res.data.restaurants.map((result) => {
-                        result.restaurant.name.toLowerCase().startsWith(SearchQuery.toLowerCase().slice(0, 4)) ?
-                            startsWith.push(
-                                result.restaurant.name + "@information" +
-                                result.restaurant.featured_image + "@information" +
-                                result.restaurant.id
-                            )
-                            :
-                            notStartsWith.push(
-                                result.restaurant.name + "@information" +
-                                result.restaurant.featured_image + "@information" +
-                                result.restaurant.id
-                            )
-                    })
-                    setResultData(startsWith.concat(notStartsWith))
-                    setRestaurant(res.data.restaurants)
-                    setDataFetched(true)
+    // SearchRequest
+    const handleSearch = () => {
+        setDataFetched(false)
+        Axios.get(`api/v2.1/search?q=${SearchQuery}&count=8`)
+            .then((res) => {
+                let startsWith = [], notStartsWith = []
+                res.data.restaurants.map((result) => {
+                    result.restaurant.name.toLowerCase().startsWith(SearchQuery.toLowerCase().slice(0, 4)) ?
+                        startsWith.push(
+                            result.restaurant.name + "@information" +
+                            result.restaurant.featured_image + "@information" +
+                            result.restaurant.id
+                        )
+                        :
+                        notStartsWith.push(
+                            result.restaurant.name + "@information" +
+                            result.restaurant.featured_image + "@information" +
+                            result.restaurant.id
+                        )
                 })
-                .catch((error) => {
-                    console.log(error)
-                })
-        }
+                setResultData(startsWith.concat(notStartsWith))
+                setRestaurant(res.data.restaurants)
+                setDataFetched(true)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
 
+    const debounce = (func, delay) => {
+        return (...args) => {
+            timeOutId ? clearTimeout(timeOutId) : null;
+            timeOutId = setTimeout(() => func.apply(null, args), delay);
+        };
+    };
+
+    const debounceSearch = debounce(handleSearch, 4000);
+
     // handleSubmitSearch
-    const handleSearchRestaurant = (item) => {
+    const handleSearchSubmit = (item) => {
         restaurant.map((res) => {
             if (res.restaurant.id === item.split('@information')[2]) {
 
@@ -90,7 +99,7 @@ const SearchBar = ({ navigation }) => {
             <>
                 {
                     isDataFetched ?
-                        <Pressable onPress={() => handleSearchRestaurant(item)}>
+                        <Pressable onPress={() => handleSearchSubmit(item)}>
                             <View style={styles.SuggestionStyleList}>
                                 <Image
                                     source={{
@@ -152,8 +161,9 @@ const SearchBar = ({ navigation }) => {
                     <RenderLeftButton />
                     <TextInput
                         style={styles.InputContainerStyle}
-                        onChangeText={(text) => handleOnChangeText(text)}
+                        onChangeText={(text) => setSearchQuery(text)}
                         value={SearchQuery}
+                        onChange={debounceSearch}
                         placeholder='Search Restaurant'
                         ref={inputFocus}
                     />
