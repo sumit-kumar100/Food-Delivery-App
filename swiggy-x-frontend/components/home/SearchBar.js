@@ -70,7 +70,7 @@ const SearchBar = ({ navigation }) => {
         };
     };
 
-    const debounceSearch = debounce(handleSearch, 1000);
+    const debounceSearch = debounce(handleSearch, 500);
 
     // handleSubmitSearch
     const handleSearchSubmit = (item) => {
